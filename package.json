@@ -1,0 +1,31 @@
+{
+  "name": "prisma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down",
+    "db:restart": "yarn db:down && yarn db:up && sleep 1 && yarn db:migrate:deploy",
+    "db:studio": "prisma studio",
+    "db:client": "prisma generate",
+    "db:migrate:dev": "prisma migrate dev --name ",
+    "db:migrate:deploy": "prisma migrate deploy",
+    "app:debug": "ts-node src/index.ts",
+    "app:dev": "nodemon src/index.ts --watch",
+    "app:prod": "tsc && node dist/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "nodemon": "^2.0.20",
+    "prisma": "^4.6.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "@prisma/client": "^4.6.1"
+  }
+}
